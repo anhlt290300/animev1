@@ -114,7 +114,7 @@ const SearchBox = ({ type }) => {
               className={
                 type === "header"
                   ? "max-h-96 overflow-auto relative"
-                  : "max-h-72 overflow-auto relative"
+                  : " max-h-52 overflow-auto relative"
               }
             >
               {dataSearch.map((item, index) => {

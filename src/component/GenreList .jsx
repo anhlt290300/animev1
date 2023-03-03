@@ -26,7 +26,6 @@ export const GenreListData = [
     'martial-arts',
     'mecha',
     'military',
-    'Mmusic',
     'mystery',
     'parody',
     'police',

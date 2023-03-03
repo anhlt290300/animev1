@@ -130,7 +130,7 @@ const Register = ({ setOpenLogin, type }) => {
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
           </svg>
         </div>
-        <div className="px-8 py-16 text-white">
+        <div className="px-8 mobile-L:py-16 mobile-S:py-10 text-white">
           <form action="" method="post">
             <p className="font-semibold text-xl">Free Sign Up</p>
             <p className="mt-2">
@@ -261,7 +261,7 @@ const Register = ({ setOpenLogin, type }) => {
 
             <button
               onClick={() => Register(fullname, email, password)}
-              className="flex justify-center items-center w-full py-2 mt-12 rounded bg-[rgba(0,0,0,.5)] hover:bg-[rgba(0,0,0,.8)] hover:shadow-lightRounder transition-all duration-200 ease-in hover:-translate-y-2"
+              className="flex justify-center items-center w-full py-2 desktop-L:mt-12 mt-8 rounded bg-[rgba(0,0,0,.5)] hover:bg-[rgba(0,0,0,.8)] hover:shadow-lightRounder transition-all duration-200 ease-in hover:-translate-y-2"
               type="button"
             >
               <svg
@@ -282,7 +282,7 @@ const Register = ({ setOpenLogin, type }) => {
             </button>
           </form>
 
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center desktop-L:mt-10 mt-6">
             <p>Already have account? </p>
             <p
               onClick={() => setOpenLogin(true)}

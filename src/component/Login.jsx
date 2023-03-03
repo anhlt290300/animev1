@@ -135,14 +135,14 @@ const Login = ({ type, setOpenLogin }) => {
             <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
           </svg>
         </div>
-        <div className="px-8 py-16 text-white">
+        <div className="px-8 mobile-L:py-16 mobile-S:py-10 text-white">
           <form action="" method="post">
             <p className="font-semibold text-xl">Sign In</p>
             <p className="mt-2">
               Enter your email address and password to access the account
             </p>
 
-            <div className="flex mt-10 items-center">
+            <div className="flex desktop-L:mt-10 mt-4 items-center">
               <p className="mr-2">Email address</p>
               {errorEmail.length !== 0 ? (
                 <svg
@@ -169,7 +169,7 @@ const Login = ({ type, setOpenLogin }) => {
             />
             <p className="h-2  text-red-500 font-semibold">{errorEmail}</p>
 
-            <div className="flex justify-between mt-10">
+            <div className="flex justify-between desktop-L:mt-10 mt-4">
               <div className="flex items-center">
                 <p className="mr-2">Password</p>
                 {errorPassword.length !== 0 ? (
@@ -201,7 +201,7 @@ const Login = ({ type, setOpenLogin }) => {
             />
             <p className="h-2  text-red-500 font-semibold">{errorPassword}</p>
 
-            <div className="flex items-center mt-10 cursor-pointer">
+            <div className="flex items-center desktop-L:mt-10 mt-4 cursor-pointer">
               <div className=" relative flex items-center">
                 <input
                   className="w-6 h-6 cursor-pointer rounded mr-2 checked:bg-black appearance-none border-2 border-black indeterminate:bg-white focus:outline-none focus:border-0 focus:shadow-lightRounder"
@@ -233,7 +233,7 @@ const Login = ({ type, setOpenLogin }) => {
 
             <button
               onClick={() => Login(email, password)}
-              className="flex justify-center items-center w-full py-2 mt-12 rounded bg-[rgba(0,0,0,.5)] hover:bg-[rgba(0,0,0,.8)] hover:shadow-lightRounder transition-all duration-200 ease-in hover:-translate-y-2"
+              className="flex justify-center items-center w-full py-2 desktop-L:mt-12 mt-8 rounded bg-[rgba(0,0,0,.5)] hover:bg-[rgba(0,0,0,.8)] hover:shadow-lightRounder transition-all duration-200 ease-in hover:-translate-y-2"
               type="button"
             >
               <svg
@@ -257,7 +257,7 @@ const Login = ({ type, setOpenLogin }) => {
             </button>
           </form>
 
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center desktop-L:mt-10 mt-6">
             <p>Don't have an account? </p>
             <p
               onClick={() => setOpenLogin(false)}
