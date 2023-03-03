@@ -9,7 +9,7 @@ const handleGetComments = async (anime_title, episode) => {
       createNewAnimeComments(anime_title);
       try {
         const list = await getDoc(docRef);
-        //console.log(list.data().listUserLike)
+        //console.log(list.data())
         return {
           key: "correct",
           data: list.data(),
@@ -36,7 +36,7 @@ const handleGetComments = async (anime_title, episode) => {
         //console.log(list.data().listUserLike)
         return {
           key: "correct",
-          data: list.data(),
+          data: list.data().listComments,
         };
       } catch (e) {
         return {
@@ -75,26 +75,32 @@ const handleSubmitComment = async (
     currentdate.getSeconds();
   try {
     createNewAnimeComments(anime_title, anime_episode);
-    const commentRef = doc(db_firestore, anime_title, anime_episode);
-    await updateDoc(commentRef, {
-      comment: arrayUnion({
-        user_id: user_id,
-        comment: comment,
-        time: time,
-        day: day,
-      }),
-      listComments: arrayUnion({
-        comment: {
+    //console.log(anime_episode)
+    if (anime_episode === undefined) {
+      const commentRef = doc(db_firestore, anime_title, 'listComments');
+      await updateDoc(commentRef, {
+        comment: arrayUnion({
           user_id: user_id,
           comment: comment,
           time: time,
           day: day,
-        },
-      }),
-    });
-    return { key: "correct", data: "add" };
+        }),
+      });
+      return { key: "correct", data: "add" };
+    } else {
+      const commentRef = doc(db_firestore, anime_title, anime_episode);
+      await updateDoc(commentRef, {
+        listComments: arrayUnion({
+            user_id: user_id,
+            comment: comment,
+            time: time,
+            day: day,
+        }),
+      });
+      return { key: "correct", data: "add" };
+    }
   } catch (error) {
-    return { key: "error", data: error.code };
+    return { key: "error", data: error };
   }
 };
 

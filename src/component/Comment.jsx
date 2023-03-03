@@ -20,7 +20,7 @@ const Comment = ({ anime_title, anime_episode }) => {
       await converseComment(
         (
           await handleGetComments(anime_title, anime_episode)
-        )?.data?.comment
+        )?.data
       )
         .then((res) => {
           setListComment(res.reverse());
@@ -45,7 +45,7 @@ const Comment = ({ anime_title, anime_episode }) => {
           JSON.parse(localStorage.getItem("user_id"))
         )
           .then((res) => {
-            //console.log(res)
+            console.log(res);
           })
           .catch((e) => {});
 
@@ -55,6 +55,7 @@ const Comment = ({ anime_title, anime_episode }) => {
           )?.data?.comment
         )
           .then((res) => {
+            console.log(res);
             setListComment(res.reverse());
             setComment("");
           })
