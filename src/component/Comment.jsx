@@ -24,7 +24,7 @@ const Comment = ({ anime_title, anime_episode }) => {
       )
         .then((res) => {
           setListComment(res.reverse());
-          //console.log(res );
+          //console.log(res);
         })
         .catch((e) => {
           console.log(e);

@@ -92,6 +92,7 @@ const MovieWatch = () => {
       .then((res) => {
         //console.log(res.data);
         setSource(res.data?.sources);
+        setSource(res.data?.Referer)
         setSourceBK(res.data?.sources_bk);
       })
       .catch((error) => {

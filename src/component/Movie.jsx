@@ -35,7 +35,7 @@ const Movie = () => {
           if (res) setIsFavorite(res);
         })
         .catch((e) => {
-          alert(e)
+          alert(e);
         });
     })();
     return () => {};
@@ -50,24 +50,29 @@ const Movie = () => {
   };
 
   const toggleToFavorite = async () => {
-    await handleToggleFavoriteAnime(
-      animeTitle,
-      JSON.parse(localStorage.getItem("user_id")),
-      isFavorite
-    )
-      .then((res) => {
-        if (res.key !== "error") {
-          if (res.data === "add") {
-            alert("Them vao list anime yeu thich");
+    if (JSON.parse(localStorage.getItem("user_id")) === null) {
+      alert("Dang nhap da");
+    } else {
+      console.log('aaa')
+      await handleToggleFavoriteAnime(
+        animeTitle,
+        JSON.parse(localStorage.getItem("user_id")),
+        isFavorite
+      )
+        .then((res) => {
+          if (res.key !== "error") {
+            if (res.data === "add") {
+              alert("Them vao list anime yeu thich");
+            } else {
+              alert("xoa khoi list anime yeu thich");
+            }
+            setIsFavorite((isFavorite) => !isFavorite);
           } else {
-            alert("xoa khoi list anime yeu thich");
+            alert(res.data);
           }
-          setIsFavorite((isFavorite) => !isFavorite);
-        } else {
-          alert(res.data);
-        }
-      })
-      .catch((e) => {});
+        })
+        .catch((e) => {});
+    }
   };
 
   useEffect(() => {
@@ -84,7 +89,7 @@ const Movie = () => {
       })
       .catch((error) => {
         //console.log('loi r');
-        navigate('/error-page/server-error')
+        navigate("/error-page/server-error");
       });
   }, []);
 
@@ -96,12 +101,9 @@ const Movie = () => {
         <NoneEpisode show={open} setShow={setOpen} />
         <div className="w-full flex items-center justify-center ">
           <div className=" w-full mobile:p-8 desktop:px-12 desktop:py-8 mobile-M:px-6 px-4 mobile-L:py-8 py-4 tablet:px-12 tablet:py-12 bg-gray-500">
-
             <div className="flex flex-col items-center w-full">
-
               <div className="desktop:flex w-full desktop:h-[30rem] justify-center overflow-y-hidden grid grid-cols-1 items-center">
-
-                <div className="relative w-full h-full desktop:pr-4 flex items-center justify-end">                  
+                <div className="relative w-full h-full desktop:pr-4 flex items-center justify-end">
                   <div className="relative w-full h-full overflow-hidden mobile-S:rounded-none rounded-md">
                     <img
                       className="h-full w-full transition-all duration-200 ease-in hover:scale-110"
@@ -143,12 +145,13 @@ const Movie = () => {
 
                 <div className="relative w-full h-full mobile:pl-4 flex items-center justify-start mobile:mt-0 mt-4">
                   <div className="relative w-full tablet:h-full flex flex-col items-start justify-between ">
-                    
                     <div className="w-full mb-2 -mt-2 mobile:h-[30rem] h-full overflow-y-auto mobile:block flex flex-col justify-between">
                       <p className="uppercase tablet:text-3xl mobile-L:text-2xl text-xl font-semibold text-yellow-500 ">
                         {data.animeTitle}
                       </p>
-                      <p className=" mobile-L:text-sm text-xs">{data.otherNames}</p>
+                      <p className=" mobile-L:text-sm text-xs">
+                        {data.otherNames}
+                      </p>
                     </div>
 
                     <div className="w-full bg-[rgba(0,0,0,0.9)] p-4 text-white my-2 tablet:text-base text-sm">

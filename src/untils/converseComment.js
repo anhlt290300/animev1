@@ -1,10 +1,14 @@
 import { getUserById } from "../firebase/getUserById";
 
 export const converseComment = async (listComment) => {
+  
+  if (listComment.length === undefined) {
+    var list = listComment.comment;
+  } else var list = listComment;
   try {
     var result = [];
 
-    for (const item of listComment) {
+    for (const item of list) {
       var res = await getUserById(item.user_id);
       result.push({
         comment: item.comment,
@@ -13,9 +17,10 @@ export const converseComment = async (listComment) => {
         name: res,
       });
     }
-    // console.log(result)
     return result;
   } catch (e) {
+    console.log(e);
+
     return e;
   }
 };
