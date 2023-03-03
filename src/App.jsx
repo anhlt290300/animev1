@@ -41,6 +41,15 @@ const App = () => {
           <Route path="*" element={<ErrorPage />} />
           <Route path="error-page" element={<ErrorPage previousPage={-2} />} />
           <Route
+            path="error-page/server-error"
+            element={
+              <ErrorPage
+                data={`The server is free, so it's often blocked to get data erratically,
+          hope you guys come back another time`}
+              />
+            }
+          />
+          <Route
             path="search-adventure/:key"
             element={<SearchAventure param="abc" />}
           />

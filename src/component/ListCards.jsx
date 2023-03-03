@@ -20,7 +20,7 @@ const ListCards = ({ genre = "action", data_ = undefined }) => {
           //console.log(res.data)
         })
         .catch((error) => {
-          navigate("/error-page");
+          navigate("/error-page/server-error");
         });
     }
   }, [genre]);

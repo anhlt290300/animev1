@@ -17,8 +17,7 @@ const IsLoad = () => {
         <p>Is Loading ...</p>
         {solong ? (
           <p className=" text-red-500 font-semibold tablet:mt-4 mt-2">
-            The server is free, so it's often blocked to get data erratically,
-            hope you guys come back another time
+            The server is free, so it's often blocked to get data erratically
           </p>
         ) : (
           ""

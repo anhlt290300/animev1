@@ -25,48 +25,53 @@ const SearchAventure = (props) => {
   }, [key_search]);
   return (
     <div className="pt-16 text-white">
-      <div className=" bg-gray-500 px-4 py-4 flex justify-around items-end ">
-        <BoxList
-          title="Genre"
-          index="Genres"
-          list={GenreListData}
-          width="w-32"
-          getValue={setGenre}
-        />
-        <BoxList
-          title="Status"
-          index="Completed"
-          list={["Completed", "Upcoming", "Ongoing"]}
-          width="w-32"
-          getValue={setStatus}
-        />
-        <BoxList
-          title="sorted by"
-          index="View"
-          list={["View", "Comment", "Year"]}
-          width="w-32"
-          getValue={setSoftBy}
-        />
+      <div className=" bg-gray-500 px-4 py-4 grid tablet:grid-cols-4 mobile-L:grid-cols-2 grid-cols-1 mobile-L:gap-4 gap-2">
+        <div className="h-full w-full flex items-end justify-center">
+          <BoxList
+            title="Genre"
+            index="Genres"
+            list={GenreListData}
+            width="w-32"
+            getValue={setGenre}
+          />
+        </div>
+        <div className="h-full w-full flex items-end justify-center">
+          <BoxList
+            title="Status"
+            index="Completed"
+            list={["Completed", "Upcoming", "Ongoing"]}
+            width="w-32"
+            getValue={setStatus}
+          />
+        </div>
 
-        <button
-          onClick={() => {
-            var g = genre ? ` genres: ${genre}` : "";
-            var s = status ? `, status: ${status}` : "";
-            var sb = softBy ? `, softed by: ${softBy}` : "";
-            setDetail(g + s + sb);
-          }}
-          className=" bg-red-500 px-12 py-2 rounded h-full transition-all duration-150 ease-in-out hover:-translate-y-2 hover:shadow-lightRounder hover:bg-red-800"
-        >
-          Search
-        </button>
+        <div className="h-full w-full flex items-end justify-center">
+          <BoxList
+            title="sorted by"
+            index="View"
+            list={["View", "Comment", "Year"]}
+            width="w-32"
+            getValue={setSoftBy}
+          />
+        </div>
+
+        <div className="h-full w-full flex items-end justify-center">
+          <button
+            onClick={() => {
+              var g = genre ? ` genres: ${genre}` : "";
+              var s = status ? `, status: ${status}` : "";
+              var sb = softBy ? `, softed by: ${softBy}` : "";
+              setDetail(g + s + sb);
+            }}
+            className=" bg-red-500 px-12 py-2 flex justify-center mobile-L:mt-0 mt-4 w-32 text-center rounded transition-all duration-150 ease-in-out hover:-translate-y-2 hover:shadow-lightRounder hover:bg-red-800"
+          >
+            <p>Search</p>
+          </button>
+        </div>
       </div>
 
       <p className="mt-6 text-2xl">List anime search for: {key_search}</p>
-      {detail ? (
-        <p className="mt-6 text-2xl">{detail}</p>
-      ) : (
-        ""
-      )}
+      {detail ? <p className="mt-6 text-2xl">{detail}</p> : ""}
 
       {dataSearch !== null ? (
         <ListCards data_={dataSearch} />

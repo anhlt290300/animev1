@@ -74,7 +74,7 @@ const Movie = () => {
     axios
       .get(`https://gogoanime.consumet.stream/anime-details/${animeTitle}`)
       .then((res) => {
-        console.log(res.data)
+        //console.log(res.data)
         setTimeout(() => {
           setData(res.data);
           setEpisodesist(res.data.episodesList.reverse());
@@ -84,7 +84,7 @@ const Movie = () => {
       })
       .catch((error) => {
         //console.log('loi r');
-        navigate('/error-page')
+        navigate('/error-page/server-error')
       });
   }, []);
 

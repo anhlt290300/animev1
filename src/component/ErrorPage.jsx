@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import pageError from "../asset/image/pageError.gif";
 import { useNavigate } from "react-router-dom";
 
-const ErrorPage = ({ previousPage, data = "2222" }) => {
+const ErrorPage = ({ previousPage, data  }) => {
   const [previous, setPrevious] = useState(-1);
 
   useEffect(() => {
@@ -17,8 +17,8 @@ const ErrorPage = ({ previousPage, data = "2222" }) => {
     <div className="flex justify-center flex-col items-center h-screen w-full relative -translate-y-16">
       <img className=" tablet:h-3/5 mobile-M:h-1/3 h-1/4 " src={pageError} alt="" />
       {data !== undefined ? (
-        <p className=" mb-16 font-semibold desktop:text-3xl tablet:text-xl mobile-L:text-base mobile-S:text-xs text-red-500">
-          The server is free, so it's often blocked to get data erratically
+        <p className=" mb-16 font-semibold desktop:text-3xl tablet:text-xl mobile-L:text-base mobile-S:text-xs text-red-500 text-center">
+          {data}
         </p>
       ) : (
         ""
