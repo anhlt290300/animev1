@@ -3,8 +3,10 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import Card from "./Card";
 import IsLoad from "./IsLoad";
+import { useNavigate } from "react-router-dom";
 const ListCards = ({ genre = "action", data_ = undefined }) => {
   const [data, setData] = useState(data_ === undefined ? null : data_);
+  const navigate = useNavigate();
   useEffect(() => {
     if (data_ !== undefined) setData(data_);
   }, [data_]);
@@ -18,7 +20,7 @@ const ListCards = ({ genre = "action", data_ = undefined }) => {
           //console.log(res.data)
         })
         .catch((error) => {
-          console.log(error);
+          navigate("/error-page");
         });
     }
   }, [genre]);

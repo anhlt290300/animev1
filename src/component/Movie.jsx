@@ -34,7 +34,9 @@ const Movie = () => {
         .then((res) => {
           if (res) setIsFavorite(res);
         })
-        .catch((e) => {});
+        .catch((e) => {
+          alert(e)
+        });
     })();
     return () => {};
   }, []);
@@ -72,7 +74,7 @@ const Movie = () => {
     axios
       .get(`https://gogoanime.consumet.stream/anime-details/${animeTitle}`)
       .then((res) => {
-        //console.log(res.data)
+        console.log(res.data)
         setTimeout(() => {
           setData(res.data);
           setEpisodesist(res.data.episodesList.reverse());
@@ -81,7 +83,8 @@ const Movie = () => {
         }, 300);
       })
       .catch((error) => {
-        console.log(error);
+        //console.log('loi r');
+        navigate('/error-page')
       });
   }, []);
 
