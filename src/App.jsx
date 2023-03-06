@@ -25,7 +25,7 @@ const LayOut = () => {
   return (
     <div className=" h-screen bg-black overflow-x-visible relative">
       <Header />
-      <div className="pt-[5rem] px-[3rem] bg-black ">
+      <div className=" desktop-L:pt-[7rem] desktop:pt-[6rem] tablet:pt-[6rem] pt-[5.5rem] px-[3rem] bg-black ">
         <Outlet />
       </div>
       <ScrollStartBtn />

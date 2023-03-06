@@ -28,7 +28,7 @@ const ListCards = ({ genre, data_, popular, movies, topairing }) => {
 
   useEffect(() => {
     if (popular !== undefined) {
-      console.log('aaa')
+      //console.log('aaa')
       axios
         .get(`https://gogoanime.consumet.stream/popular`)
         .then((res) => {
@@ -79,7 +79,7 @@ const ListCards = ({ genre, data_, popular, movies, topairing }) => {
   if (data === null) return <IsLoad />;
   else
     return (
-      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 mobile-L:grid-cols-2 grid-cols-1 gap-8 py-8 relative z-[2]">
+      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 mobile-L:grid-cols-2 grid-cols-1 tablet:gap-8 mobile-L:gap-4 gap-8 py-4 relative z-[2]">
         {data !== null &&
           data.map((item, index) => {
             return (

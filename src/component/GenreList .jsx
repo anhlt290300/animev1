@@ -55,7 +55,7 @@ const GenreList = ({ setGenre_ }) => {
     const [genre, setGenre] = useState('action')
 
     return (
-        <div className='my-4 text-white' >
+        <div className='text-white' >
             {
                 GenreListData.map((item, index) => {
                     return (
