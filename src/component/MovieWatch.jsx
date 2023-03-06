@@ -90,7 +90,7 @@ const MovieWatch = () => {
     axios
       .get(`https://gogoanime.consumet.stream/vidcdn/watch/${episode}`)
       .then((res) => {
-        //console.log(res.data);
+        console.log(res.data);
         setSource(res.data?.sources);
         setSource(res.data?.Referer)
         setSourceBK(res.data?.sources_bk);

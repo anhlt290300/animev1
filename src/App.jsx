@@ -13,7 +13,10 @@ import MovieWatch from "./component/MovieWatch";
 import ErrorPage from "./component/ErrorPage";
 import ScrollStartBtn from "./component/ScrollStartBtn";
 import SearchAventure from "./component/SearchAventure";
+import PopularAnime from "./pages/PopularAnime";
 import { useEffect } from "react";
+import AnimeMovies from "./pages/AnimeMovies";
+import TopAiring from "./pages/TopAiring";
 const LayOut = () => {
   var pathname = useLocation().pathname;
 
@@ -36,6 +39,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LayOut />}>
           <Route index element={<Home />} />
+          <Route path="popular-anime" element={<PopularAnime />} />
+          <Route path="anime-movies" element={<AnimeMovies />} />
+          <Route path="top-airing" element={<TopAiring />} />
           <Route path=":animeTitle/full" element={<Movie />} />
           <Route path=":animeTitle/:episode" element={<MovieWatch />} />
           <Route path="*" element={<ErrorPage />} />

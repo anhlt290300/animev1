@@ -4,20 +4,21 @@ import axios from "axios";
 import Card from "./Card";
 import IsLoad from "./IsLoad";
 import { useNavigate } from "react-router-dom";
-const ListCards = ({ genre = "action", data_ = undefined }) => {
+const ListCards = ({ genre, data_, popular, movies, topairing }) => {
   const [data, setData] = useState(data_ === undefined ? null : data_);
   const navigate = useNavigate();
   useEffect(() => {
     if (data_ !== undefined) setData(data_);
   }, [data_]);
   useEffect(() => {
-    if (data_ === undefined) {
+    if (genre !== undefined) {
       axios
         .get(`https://gogoanime.consumet.stream/genre/${genre}`)
         .then((res) => {
           //console.log(res.data)
-          setTimeout(() => setData(res.data), 300);
-          //console.log(res.data)
+          let change = () => setTimeout(() => setData(res.data), 300);
+          change()
+          return clearTimeout(change);
         })
         .catch((error) => {
           navigate("/error-page/server-error");
@@ -25,29 +26,83 @@ const ListCards = ({ genre = "action", data_ = undefined }) => {
     }
   }, [genre]);
 
+  useEffect(() => {
+    if (popular !== undefined) {
+      axios
+        .get(`https://gogoanime.consumet.stream/popular`)
+        .then((res) => {
+          //console.log(res.data);
+          let change = () => setTimeout(() => setData(res.data), 300);
+          change()
+          return clearTimeout(change);
+        })
+        .catch((error) => {
+          navigate("/error-page/server-error");
+        });
+    }
+  }, [popular]);
+
+  useEffect(() => {
+    if (movies !== undefined) {
+      axios
+        .get(`https://gogoanime.consumet.stream/anime-movies`)
+        .then((res) => {
+          //console.log(res.data);
+          let change = () => setTimeout(() => setData(res.data), 300);
+          change()
+          return clearTimeout(change);
+        })
+        .catch((error) => {
+          navigate("/error-page/server-error");
+        });
+    }
+  }, [movies]);
+
+  useEffect(() => {
+    if (topairing !== undefined) {
+      //console.log('aaa')
+      axios
+        .get(`https://gogoanime.consumet.stream/top-airing`)
+        .then((res) => {
+          //  console.log(res.data);
+          let change = () => setTimeout(() => setData(res.data), 300);
+          change()
+          return clearTimeout(change);
+        })
+        .catch((error) => {
+          navigate("/error-page/server-error");
+        });
+    }
+  }, [topairing]);
+
+
+
   if (data === null) return <IsLoad />;
   else
-    return (
-      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 mobile-L:grid-cols-2 grid-cols-1 gap-8 py-8 relative z-[2]">
-        {data !== null &&
-          data.map((item, index) => {
-            return (
-              <div className="" key={index}>
-                <Card
-                  animeId={item.animeId}
-                  animeTitle={item.animeTitle}
-                  animeImg={item.animeImg}
-                />
-              </div>
-            );
-          })}
-      </div>
-    );
+  return (
+    <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 mobile-L:grid-cols-2 grid-cols-1 gap-8 py-8 relative z-[2]">
+      {data !== null &&
+        data.map((item, index) => {
+          return (
+            <div className="" key={index}>
+              <Card
+                animeId={item.animeId}
+                animeTitle={item.animeTitle}
+                animeImg={item.animeImg}
+              />
+            </div>
+          );
+        })}
+    </div>
+  );
 };
 
 ListCards.propTypes = {
   genre: PropTypes.string,
   data_: PropTypes.array,
+  popular: PropTypes.bool,
+  movies: PropTypes.bool,
+  topairing: PropTypes.bool,
 };
 
 export default ListCards;
