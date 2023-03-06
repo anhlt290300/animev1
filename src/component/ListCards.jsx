@@ -17,30 +17,31 @@ const ListCards = ({ genre, data_, popular, movies, topairing }) => {
         .then((res) => {
           //console.log(res.data)
           let change = () => setTimeout(() => setData(res.data), 300);
-          change()
+          change();
           return clearTimeout(change);
         })
         .catch((error) => {
           navigate("/error-page/server-error");
         });
     }
-  }, [genre]);
+  }, [genre, navigate]);
 
   useEffect(() => {
     if (popular !== undefined) {
+      console.log('aaa')
       axios
         .get(`https://gogoanime.consumet.stream/popular`)
         .then((res) => {
           //console.log(res.data);
           let change = () => setTimeout(() => setData(res.data), 300);
-          change()
+          change();
           return clearTimeout(change);
         })
         .catch((error) => {
           navigate("/error-page/server-error");
         });
     }
-  }, [popular]);
+  }, [popular, navigate]);
 
   useEffect(() => {
     if (movies !== undefined) {
@@ -49,14 +50,14 @@ const ListCards = ({ genre, data_, popular, movies, topairing }) => {
         .then((res) => {
           //console.log(res.data);
           let change = () => setTimeout(() => setData(res.data), 300);
-          change()
+          change();
           return clearTimeout(change);
         })
         .catch((error) => {
           navigate("/error-page/server-error");
         });
     }
-  }, [movies]);
+  }, [movies, navigate]);
 
   useEffect(() => {
     if (topairing !== undefined) {
@@ -66,35 +67,33 @@ const ListCards = ({ genre, data_, popular, movies, topairing }) => {
         .then((res) => {
           //  console.log(res.data);
           let change = () => setTimeout(() => setData(res.data), 300);
-          change()
+          change();
           return clearTimeout(change);
         })
         .catch((error) => {
           navigate("/error-page/server-error");
         });
     }
-  }, [topairing]);
-
-
+  }, [topairing, navigate]);
 
   if (data === null) return <IsLoad />;
   else
-  return (
-    <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 mobile-L:grid-cols-2 grid-cols-1 gap-8 py-8 relative z-[2]">
-      {data !== null &&
-        data.map((item, index) => {
-          return (
-            <div className="" key={index}>
-              <Card
-                animeId={item.animeId}
-                animeTitle={item.animeTitle}
-                animeImg={item.animeImg}
-              />
-            </div>
-          );
-        })}
-    </div>
-  );
+    return (
+      <div className="grid desktop:grid-cols-4 tablet:grid-cols-3 mobile-L:grid-cols-2 grid-cols-1 gap-8 py-8 relative z-[2]">
+        {data !== null &&
+          data.map((item, index) => {
+            return (
+              <div className="" key={index}>
+                <Card
+                  animeId={item.animeId}
+                  animeTitle={item.animeTitle}
+                  animeImg={item.animeImg}
+                />
+              </div>
+            );
+          })}
+      </div>
+    );
 };
 
 ListCards.propTypes = {
