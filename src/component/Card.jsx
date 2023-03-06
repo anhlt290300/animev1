@@ -21,10 +21,10 @@ const Card = ({ animeTitle, animeId, animeImg }) => {
             onClick={()=>ChangePath(animeId)}
         >
             <img
-                className='w-full transition-all bg-cover duration-300 ease-out hover:scale-110'
+                className='w-full transition-all bg-cover duration-300 scale-125 ease-out hover:scale-150'
                 src={animeImg} alt="" />
-            <div className='absolute bottom-4 left-4 text-white font-semibold text-base mobile-L:text-xs desktop-L:text-2xl desktop:text-lg tablet:text-base max-h-20 overflow-y-hidden'>
-                <p className=''>{animeTitle}</p>
+            <div className='absolute bottom-0 left-0 w-full flex items-center justify-center p-2 bg-[rgba(0,0,0,0.6)] text-white font-semibold text-base mobile-L:text-xs desktop-L:text-2xl desktop:text-lg tablet:text-base h-1/3 overflow-y-hidden'>
+                <p className=' text-center'>{animeTitle}</p>
             </div>
         </div>
     )
