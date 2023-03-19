@@ -9,8 +9,7 @@ const TopAiring = () => {
       </h1>
       <ListCards topairing={true} />
       <img
-        src="https://cdn.hencb.top/ext/2021/2/3/yeu-cau-hu-hong-bi-mat/1/01.jpg"
-        referrerPolicy="no-referrer"
+        src="https://i551.ntcdntempv26.com/data/images/4389/966409/003-11a5c58.jpg?data=net"
         alt=""
       />
     </div>
